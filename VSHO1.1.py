@@ -4,21 +4,21 @@ import matplotlib.pyplot as plt
 #Function variables
 
 x_array = np.linspace(-5, 5, 500)
-V_x = 0
+V = 0
 
 #defining the function for the simple harmonic oscillator
 
 k = float(input("What is the value of k?\n"))
 
 
-def VSHO():
+def VSHO(k):
     
-    V_x = k * x_array ** 2
-    return V_x
+    V = k * x_array ** 2
+    return V
 
 
 #example plot of the potential 
-plt.plot(x_array, VSHO())
+plt.plot(x_array, VSHO(k))
 
     
 
