@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#defining the function for the potential of a wall function where V_0 is the arbitrary potential of the wall, and a is the width of the box.
+#defining the function for the potential of a wall function where V0 is the arbitrary potential of the wall, and a is the width of the box.
 
 
 
@@ -14,7 +14,7 @@ x_array = np.linspace(-3*a, 4*a, 500)
 V_x = 0
 
 
-def VWall():
+def VWall(V0, a, x_array):
     for i in range(500): 
      if x_array[i] > a or x_array[i] < 0:
         V.append(0)
@@ -25,6 +25,6 @@ def VWall():
     
  
 #example plot of the potential
-plt.plot(x_array, VWall())
+plt.plot(x_array, VWall(V0, a, x_array))
 
     
