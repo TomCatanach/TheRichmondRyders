@@ -51,14 +51,14 @@ for t in t_array:
 
 fig, ax = plt.subplots()
 
-ax.set_xlabel("X [arbitary units]")
-ax.set_ylabel("$|\Psi(x, t)|$", color="C0")
+ax.set_xlabel("X")
+ax.set_ylabel("$|\Psi(x, t)|$", color="green")
 
 ax_twin = ax.twinx()
-ax_twin.plot(x_array, v_x, color="C1")
-ax_twin.set_ylabel("V(x) [arbitary units]", color="C1")
+ax_twin.plot(x_array, v_x, color="red")
+ax_twin.set_ylabel("V(x)", color="red")
 
-line, = ax.plot([], [], color="C0", lw=2)
+line, = ax.plot([], [], color="green", lw=2)
 ax.grid()
 xdata, ydata = [], []
 
