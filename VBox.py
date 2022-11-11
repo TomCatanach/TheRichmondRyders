@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 x_array = np.linspace(-5, 5, 500)
 V_x = 0
 
-#defining the function for the potential of a particle in a box where V_0 is the arbitrary potential of the box, and a is the range of the box.
+#defining the function for the potential of a particle in a box where V_0 is the arbitrary potential of the box, and a is the width of the box.
 
 
 
 V = []
 V_0 = int(input("What is your potential?\n"))
-a = float(input("What is the width of the box?"))
+a = float(input("What is the width of the box?\n"))
 
  
 
@@ -26,7 +26,7 @@ def VBox():
  
     
  
-#example plot of the potential for V_0 = 4 and a = 3
+#example plot of the potential
 plt.plot(x_array, VBox())
 
     
