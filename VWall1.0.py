@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#defining the function for the potential of a particle in a box where V_0 is the arbitrary potential of the box, and a is the width of the box.
+#defining the function for the potential of a wall function where V_0 is the arbitrary potential of the wall, and a is the width of the box.
 
 
 
