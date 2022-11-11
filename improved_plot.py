@@ -24,13 +24,13 @@ x_array = np.linspace(xmin, xmax, Nx)
 t_array = np.linspace(tmin, tmax, Nt)
 v_x = k * x_array ** 2
 #when we have worked out the input function...
-#in which the user can enter in their own values/text file
-#the x_array above can be replaced to generate the graph for the values they have.
+#[in which the user can enter in their own values/text file]
+#... the x_array above can be replaced to generate the graph for the values they have.
 psi = np.exp(-(x_array+2)**2)
 
+#to find the derivatives dependant on x and t, find the difference between two arrays for x and t 
 dt = t_array[1] - t_array[0]
 dx = x_array[1] - x_array[0]
-
 v_x_matrix = diags(v_x)
 
 H = -0.5 * FinDiff(0, dx, 2).matrix(x_array.shape) + v_x_matrix
