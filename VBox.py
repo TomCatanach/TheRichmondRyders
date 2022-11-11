@@ -8,20 +8,26 @@ V_x = 0
 
 #defining the function for the potential of a particle in a box where V_0 is the arbitrary potential of the box, and a is the range of the box.
 
-V = []
-a = 0
 
-def VBox(V_0, a):
+
+V = []
+V_0 = int(input("What is your potential?\n"))
+a = float(input("What is the width of the box?"))
+
+ 
+
+def VBox():
     for i in range(500): 
      if x_array[i] > a or x_array[i] < 0:
         V.append(V_0)
      else:
         V.append(0)        
     return V
-
-
+ 
+    
+ 
 #example plot of the potential for V_0 = 4 and a = 3
-plt.plot(x_array, VBox(4,3))
+plt.plot(x_array, VBox())
 
     
 
