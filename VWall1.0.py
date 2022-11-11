@@ -7,24 +7,24 @@ import matplotlib.pyplot as plt
 
 
 V = []
-V_0 = float(input("What is your potential?\n"))
+V0 = float(input("What is your potential?\n"))
 a = float(input("What is the width of the box?\n"))
 
 x_array = np.linspace(-3*a, 4*a, 500)
 V_x = 0
 
 
-def VBox():
+def VWall():
     for i in range(500): 
      if x_array[i] > a or x_array[i] < 0:
         V.append(0)
      else:
-        V.append(V_0)        
+        V.append(V0)        
     return V
  
     
  
 #example plot of the potential
-plt.plot(x_array, VBox())
+plt.plot(x_array, VWall())
 
     
