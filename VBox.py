@@ -1,25 +1,23 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Function variables
 
-x_array = np.linspace(-5, 5, 500)
-V_x = 0
-
-#defining the function for the potential of a particle in a box where V_0 is the arbitrary potential of the box, and a is the width of the box.
+#defining the function for the potential of a particle in a box where V0 is the arbitrary potential of the box, and a is the width of the box.
 
 
 
 V = []
-V_0 = int(input("What is your potential?\n"))
+V0 = int(input("What is your potential?\n"))
 a = float(input("What is the width of the box?\n"))
 
- 
+x_array = np.linspace(-3*a, 4*a, 500)
 
-def VBox():
+
+
+def VBox(V0, a, x_array):
     for i in range(500): 
      if x_array[i] > a or x_array[i] < 0:
-        V.append(V_0)
+        V.append(V0)
      else:
         V.append(0)        
     return V
@@ -27,7 +25,7 @@ def VBox():
     
  
 #example plot of the potential
-plt.plot(x_array, VBox())
+plt.plot(x_array, VBox(V0, a, x_array))
 
     
 
