@@ -1,3 +1,4 @@
 # TheRichmondRyders
 PH3010 Group Project (G)
-dfgf 12345
+
+In this branch i will try produce some code for plotting!
