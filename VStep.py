@@ -19,7 +19,7 @@ def VStep(V_0, a):
     return V
 
 
-#example plot of the potential for V_0 = 4 and a = 3
+#example plot of the potential for V_0 = 4 and a = 0.5
 plt.plot(x_array, VStep(4,0.5))
 
     
