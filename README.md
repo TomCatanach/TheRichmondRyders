@@ -1,6 +1,7 @@
 # TheRichmondRyders
-PH3010 Group Project (G)
-This README document is for the purpose of documenting what we have produced during the group project and how we went about producing the final result of a programme that can solve Schrödinger’s equation and display it as an animated graph. 
+PH3010 Group Project Group (G)
+
+This README.md document is for the purpose of documenting what we have produced during the group project and how we went about producing the final result of a programme that can solve Schrödinger’s equation and display it as an animated graph. 
 
 Initially, we ran some tests to work out how GitHub worked such as setting up an initial issue and working out how to push files onto a repository. 
 
