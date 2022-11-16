@@ -11,8 +11,12 @@ from findiff import FinDiff
 from scipy.sparse.linalg import inv
 from scipy.sparse import eye, diags
 import matplotlib.animation as animation
+import math
 
 class schrodinger:
+    
+    def v(x):
+        efef
     
     def form(x,t):
         """
@@ -26,11 +30,13 @@ class schrodinger:
         valid = 1
         
         while valid ==  1:
-            form = input("Form of wavefunction to be operated on: Reccomended[R] or Custom[C]\n")
+            form = input("""Form of wavefunction to be operated on: Reccomended[R] or Custom[C]\n
+                         Reccomended format: $sin(x) * e**{\frac{-iEt}{h}}\n$
+                         Custom: y = [acos(x) + bsin(x)] exp[(-i/h)Et]\n""")
         
             if form == "R":
                 valid = 2
-                func = ( np.sin(x) ) * e **((-i/hb)*E*t)
+                func = ( np.sin(x) ) * math.exp((-i/scipy.hbar)*E*t)
                 return func
                 
             elif form == "C":
@@ -38,12 +44,12 @@ class schrodinger:
                 print("the function follows the form y = [acos(x) + bsin(x)] exp[(-i/h)Et]\n")
                 a=input("Please input value for a: ")
                 b=input("Please input value for b: ")
-                func = ( a*np.cos(x) + b*np.sin(x) ) * e **((-i/hb)*E*t)
+                func = ( a*np.cos(x) + b*np.sin(x) ) * math.exp((-i/scipy.hbar)*E*t)
                 return func
                 
             else:
                 print("This is not an accepted input parameter, please enter Reccomended[R] or Custom[C]:\n")
-                valid=1
+                valid = 1
     
     
     def diff2(x,func): # doesnt work - i want the output from form to be read into the function

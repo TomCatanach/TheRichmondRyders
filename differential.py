@@ -18,36 +18,45 @@ class schrodinger:
         """
         Parameters
         ----------
-        choices for what form the relation should be
+        x dimension
         -------
         output
-            the apropriate equation ready to be computed and approximated
+        the apropriate equation ready to be computed and approximated
         """
         valid = 1
         
         while valid ==  1:
-            form = input("Form of data to be operated on: Reccomended[R] or Custom[C]\n")
+            form = input("Form of wavefunction to be operated on: Reccomended[R] or Custom[C]\n")
         
             if form == "R":
                 valid = 2
-                return np.sin(x)
+                func = np.sin(x)
+                return func
                 
             elif form == "C":
                 valid = 2
                 print("the function follows the form y = acos(x) + ibsin(x)\n")
                 a=input("Please input value for a: ")
                 b=input("Please input value for b: ")
-                return a*np.cos(x) + b*np.sin(x)
+                func = a*np.cos(x) + b*np.sin(x)
+                return func
                 
             else:
                 print("This is not an accepted input parameter, please enter Reccomended[R] or Custom[C]:\n")
                 valid=1
     
     
-    def diff2(x,form(x)): # doesnt work - i want the output from form to be read into the function
+    def diff2(x,func): # doesnt work - i want the output from form to be read into the function
         #make form global?
         """
-        second derivative calculation
+        Parameters
+        ----------
+        x dimension
+        -------
+        output
+        second order derivative numerical calculation 
+        to be plotted against exact calculation
+        and applied to TDSE
         """
         # Define a grid in x
         N = 100 # larger N creates a larger resolution for the fit
@@ -61,18 +70,25 @@ class schrodinger:
         h = 0.1
         
         for x in x_array:
-            second_order_derivative = (form(x - h) - 2 * form(x) + form(x + h)) / h ** 2 # second order differential
+            second_order_derivative = (func(x - h) - 2 * func(x) + func(x + h)) / h ** 2 # second order differential
             second_order.append(second_order_derivative)
             
         return second_order_derivative
     
-    def diff1(x,form(x)):
+    def diff1(t,func):
         """
-        first derivative calculation
+        Parameters
+        ----------
+        t dimension
+        -------
+        output
+        first order derivative numerical calculation 
+        to be plotted against exact calculation
+        and applied to TDSE
         """
         # Define a grid in x
         N = 100 # larger N creates a larger resolution for the fit
-        x_array = np.linspace(0, 2 * np.pi, N)
+        t_array = np.linspace(0, 2 * np.pi, N)
     
         # Loop over the grid and calculate the second order derivative at each point
         first_order = []
@@ -83,8 +99,8 @@ class schrodinger:
         #or more complex functions
         h = 0.1
         
-        for x in x_array:
-            first_order_derivative = (form(x + h) - form(x)) / h # an attempt at writing the first order differential
+        for t in t_array:
+            first_order_derivative = (func(t + h) - func(t)) / h # an attempt at writing the first order differential
             first_order.append(first_order_derivative)
             
         return first_order_derivative
