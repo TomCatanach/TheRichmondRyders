@@ -12,3 +12,5 @@ Lizzie made an initial test for a graph in her branch and worked out how to anim
 Mahin and Alfie then worked to create a code that works when using different input styles such as forloops or matrices and then plotting them. 
 
 Jake began working on how to then package the finished code to create a usable package that can be used on python. 
+
+Amrit worked on setting initial conditions,plotting a potential at initial state and had a go at animating. Managed to plot wavefunction at a particular time, but struggling to actually animate.
