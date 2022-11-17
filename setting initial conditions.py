@@ -1,3 +1,8 @@
+changing the mass - small wavefunction, curve higher
+x0 is where the center of wave packet is at initial
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
