@@ -1,3 +1,9 @@
+This, as not dealing with a true infinite well, something in center. 
+Plotting a potential - line 35 and 36 - construct the array of wavefunc(x,t)
+35 creates an array of 0's and the first time is at psi0 - line 36
+Was able to plot wavefunction at particular time, but struggled to animate. Gave it a go though and in another file.
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
