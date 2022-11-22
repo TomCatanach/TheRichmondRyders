@@ -17,14 +17,12 @@ m = 1                       # mass
 sigma = 0.5                 # width of initial gaussian wave-packet
 x0 = 0                    # center of initial gaussian wave-packet
 
-
 # Initial Wavefunction
 A = 1.0 / (sigma * np.sqrt(np.pi))  # normalization constant
 psi0 = np.sqrt(A) * np.exp(-(x-x0)**2 / (2.0 * sigma**2)) * np.exp(1j * kx * x)
 
 
 # Potential V(x)
-
 V0 = int(input("What is your potential?\n"))
 a = int(input("What is the position of the step?\n"))
 
@@ -34,7 +32,6 @@ def VStep(V0, a, x):
         if _x > a:
             V[i] = V0
     return V
-
 
 
 # Make a plot of psi0 and V
@@ -48,12 +45,12 @@ fig.savefig('step_initial@2x.png')
 print("Total Probability: ", np.sum(np.abs(psi0)**2)*dx)
 
 
-# Laplace Operator (Finite Difference)
+# Laplacian
 D2 = sparse.diags([1, -2, 1], [-1, 0, 1], shape=(x.size, x.size)) / dx**2
-
 
 # Solve Schrodinger Equation
 hbar = 1
+
 # hbar = 1.0545718176461565e-34
 # RHS of Schrodinger Equation
 def psi_t(t, psi):
@@ -61,10 +58,10 @@ def psi_t(t, psi):
 
 
 # Solve the Initial Value Problem
-dt = 0.001  # time interval for snapshots
+dt = 0.001  # time interval
 t0 = 0.0    # initial time
 tf = 0.2    # final time
-t_eval = np.arange(t0, tf, dt)  # recorded time shots
+t_eval = np.arange(t0, tf, dt) 
 
 print("Solving initial value problem")
 sol = integrate.solve_ivp(psi_t,
@@ -74,11 +71,13 @@ sol = integrate.solve_ivp(psi_t,
                           method="RK23")
 
 
+
+
 # Plotting
 fig = plt.figure(figsize=(6, 4))
 for i, t in enumerate(sol.t):
     plt.plot(x, np.abs(sol.y[:, i])**2)                  # Plot Wavefunctions
-    print("Total Prob. in frame", i, "=", np.sum(np.abs(sol.y[:, i])**2)*dx)   # Print Total Probability (Should = 1)
+    print("Total Prob. in frame", i, "=", np.sum(np.abs(sol.y[:, i])**2)*dx)   # Print probability
 plt.plot(x, VStep(V0, a, x) * 0.001, "k--", label=r"$V(x) (x0.001)")   # Plot Potential
 plt.legend(loc=1, fontsize=8, fancybox=False)
 fig.savefig('step@2x.png')
@@ -120,8 +119,8 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=len(sol.t), interval=200, blit=True)
 
 
-# Save the animation into a short video
-print("Generating mp4")
+# Save the animation
+print("Generating video")
 anim.save('step.mp4', fps=15, extra_args=['-vcodec', 'libx264'], dpi=600)
 print("Generating GIF")
 # anim.save('step@2x.gif', writer='pillow', fps=15)

@@ -7,7 +7,7 @@ from matplotlib import animation
 plt.rc('savefig', dpi=300)
 
 
-# Set initial conditions
+# initial conditions
 dx = 0.002                  # spatial separation
 x = np.arange(0, 10, dx)    # spatial grid points
 a = int(input("What is the width of the wall?\n"))
@@ -18,7 +18,7 @@ sigma = 0.5                 # width of initial gaussian wave-packet
 x0 = 1.5                   # center of initial gaussian wave-packet
 
 
-# Initial Wavefunction
+# Wavefunction
 A = 1.0 / (sigma * np.sqrt(np.pi))  # normalization constant
 psi0 = np.sqrt(A) * np.exp(-(x-x0)**2 / (2.0 * sigma**2)) * np.exp(1j * kx * x)
 
@@ -27,7 +27,7 @@ psi0 = np.sqrt(A) * np.exp(-(x-x0)**2 / (2.0 * sigma**2)) * np.exp(1j * kx * x)
 
 V0 = int(input("What is your potential?\n"))
 
-def VStep(V0, a, x):   
+def VWall(V0, a, x):   
     V = np.zeros(x.shape)
     for i, _x in enumerate(x):
         if _x > a + 3 or _x < 3:
@@ -41,7 +41,7 @@ def VStep(V0, a, x):
 
 # Make a plot of psi0 and V
 fig = plt.figure(figsize=(15, 5))
-plt.plot(x, VStep(V0, a, x)*0.01, "k--", label=r"$V(x) (x0.01)")
+plt.plot(x, VWall(V0, a, x)*0.01, "k--", label=r"$V(x) (x0.01)")
 plt.plot(x, np.abs(psi0)**2, "r", label=r"$\vert\psi(t=0,x)\vert^2$")
 plt.plot(x, np.real(psi0), "g", label=r"$Re\{\psi(t=0,x)\}$")
 plt.legend(loc=1, fontsize=8, fancybox=False)
@@ -59,7 +59,7 @@ hbar = 1
 # hbar = 1.0545718176461565e-34
 # RHS of Schrodinger Equation
 def psi_t(t, psi):
-    return -1j * (- 0.5 * hbar / m * D2.dot(psi) + VStep(V0, a, x) / hbar * psi)
+    return -1j * (- 0.5 * hbar / m * D2.dot(psi) + VWall(V0, a, x) / hbar * psi)
 
 
 # Solve the Initial Value Problem
@@ -76,12 +76,12 @@ sol = integrate.solve_ivp(psi_t,
                           method="RK23")
 
 
-# Plotting
+# Plots
 fig = plt.figure(figsize=(6, 4))
 for i, t in enumerate(sol.t):
     plt.plot(x, np.abs(sol.y[:, i])**2)                  # Plot Wavefunctions
-    print("Total Prob. in frame", i, "=", np.sum(np.abs(sol.y[:, i])**2)*dx)   # Print Total Probability (Should = 1)
-plt.plot(x, VStep(V0, a, x) * 0.001, "k--", label=r"$V(x) (x0.001)")   # Plot Potential
+    print("Total Prob. in frame", i, "=", np.sum(np.abs(sol.y[:, i])**2)*dx)   # Print probability
+plt.plot(x, VWall(V0, a, x) * 0.001, "k--", label=r"$V(x) (x0.001)")   # Plot Potential
 plt.legend(loc=1, fontsize=8, fancybox=False)
 fig.savefig('step@2x.png')
 
@@ -106,8 +106,8 @@ plt.legend(loc=1, fontsize=8, fancybox=False)
 
 
 def init():
-    line11.set_data(x, VStep(V0, a, x) * 0.001)
-    line21.set_data(x, VStep(V0, a, x) * 0.001)
+    line11.set_data(x, VWall(V0, a, x) * 0.001)
+    line21.set_data(x, VWall(V0, a, x) * 0.001)
     return line11, line21
 
 
@@ -122,10 +122,10 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=len(sol.t), interval=200, blit=True)
 
 
-# Save the animation into a short video
-print("Generating mp4")
-anim.save('step.mp4', fps=15, extra_args=['-vcodec', 'libx264'], dpi=600)
+# Save the animation 
+print("Generating video")
+anim.save('Wall.mp4', fps=15, extra_args=['-vcodec', 'libx264'], dpi=600)
 print("Generating GIF")
-# anim.save('step@2x.gif', writer='pillow', fps=15)
-# anim.save('step@2x.gif', writer='imagemagick', fps=15, dpi=150, extra_args=['-layers Optimize'])
-anim.save('step@2x.gif', writer='imagemagick', fps=15, dpi=150)
+# anim.save('Wall@2x.gif', writer='pillow', fps=15)
+# anim.save('Wall@2x.gif', writer='imagemagick', fps=15, dpi=150, extra_args=['-layers Optimize'])
+anim.save('Wall.gif', writer='imagemagick', fps=15, dpi=150)
