@@ -130,3 +130,4 @@ print("Generating GIF")
 anim.save('Box@2x.gif', writer='pillow', fps=15)
 # anim.save('step@2x.gif', writer='imagemagick', fps=15, dpi=150, extra_args=['-layers Optimize'])
 #anim.save('Box@2x.gif', writer='imagemagick', fps=15, dpi=150)
+
