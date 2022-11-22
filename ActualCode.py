@@ -1,14 +1,4 @@
-#! /usr/bin/env python3
 
-'''
-Analytical solution to the Time-Dependent Schrodinger equation
-for a particle in an infinite square well
-author: Timothy Holmes
-email: tpholmes7@gmail.com
-website: http://timothypholmes.github.io
-Still working to finish a few minor user friendly features. Please update how
-would like.
-'''
 
 ######################################################################
 #Import libraries
@@ -165,12 +155,6 @@ dt = 1
 ######################################################################
 #Welcome statement
 
-print('-'*100 + '\n' + 'Analytical solution to the Time-Dependent Schrodinger equation \n' +
-'for an unbounded particle in an infinite square well \n \n' +
-'author: Timothy Holmes \n' +
-'email: tpholmes7@gmail.com \n' +
-'website: http://timothypholmes.github.io \n \n' +
-'-'*100)
 print('Note: change frames in animate for length of recording')
 
 ########################################################################
