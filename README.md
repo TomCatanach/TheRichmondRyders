@@ -22,3 +22,27 @@ Throughout the developmental stages Lizzie and Mahin managed issues with the gro
 A lot of the groups communication was done in person and via alternate group chats, WhatsApp and Discord, but the crucial developmental steps are documented in the various issues.
 
 The contents of each branch have a plethera of attempts at writing successful code and should be explored for further development, the package is not properly functional as it stands but does complete many of the requirements for the project.
+
+The directory is structured as follows:
+```
+TheRichmondRyders/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── pyproject.toml
+├── requirements.txt
+├── setup.cfg
+├── .github/
+│   └── workflows/
+│              └── python_test.yml
+├── src/
+│   └── schrodingers_python/
+│       ├── __init__.py
+│       ├── TdseBox.py
+│       ├── TdseStep.py
+│       ├── TdseWall.py
+│       ├── placeholder.py
+│       ├── command_line_interface.py
+│       └── FDTdseSHO.py
+└── tests/
+        └── test.py
