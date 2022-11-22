@@ -18,3 +18,10 @@ This break in logic is confusing.....
 
 The program is laid out well (imo) and does error handling effecitvely, but logically is incomplete.
 
+EDIT: I dont think github insights is correctly monitoring who has pushed/contributed to the repository, I believe my account
+has been seperated into three accounts
+"Tom Catanach"
+"Tom Catanach"
+"Tom7Catanach"
+
+strage.....
