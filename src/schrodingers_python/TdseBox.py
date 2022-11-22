@@ -30,7 +30,7 @@ psi0 = np.sqrt(A) * np.exp(-(x-x0)**2 / (2.0 * sigma**2)) * np.exp(1j * kx * x)
 
 V0 = int(input("What is your potential?\n"))
 
-def VStep(V0, a, x):   
+def VBox(V0, a, x):   
     V = np.zeros(x.shape)
     for i, _x in enumerate(x):
         if _x > a + 3 and _x < 3:
@@ -42,7 +42,7 @@ def VStep(V0, a, x):
 
 # Plot of psi0 and V
 fig = plt.figure(figsize=(15, 5))
-plt.plot(x, VStep(V0, a, x)*0.01, "k--", label=r"$V(x) (x0.01)")
+plt.plot(x, VBox(V0, a, x)*0.01, "k--", label=r"$V(x) (x0.01)")
 plt.plot(x, np.abs(psi0)**2, "r", label=r"$\vert\psi(t=0,x)\vert^2$")
 plt.plot(x, np.real(psi0), "g", label=r"$Re\{\psi(t=0,x)\}$")
 plt.legend(loc=1, fontsize=8, fancybox=False)
@@ -60,7 +60,7 @@ hbar = 1
 # hbar = 1.0545718176461565e-34
 # RHS of Schrodinger Equation
 def psi_t(t, psi):
-    return -1j * (- 0.5 * hbar / m * D2.dot(psi) + VStep(V0, a, x) / hbar * psi)
+    return -1j * (- 0.5 * hbar / m * D2.dot(psi) + VBox(V0, a, x) / hbar * psi)
 
 
 # Solve the Initial Value Problem
@@ -82,7 +82,7 @@ fig = plt.figure(figsize=(6, 4))
 for i, t in enumerate(sol.t):
     plt.plot(x, np.abs(sol.y[:, i])**2)                  # Plot Wavefunctions
     print("Total Prob. in frame", i, "=", np.sum(np.abs(sol.y[:, i])**2)*dx)   # Print probability
-plt.plot(x, VStep(V0, a, x) * 0.001, "k--", label=r"$V(x) (x0.001)")   # Plot Potential
+plt.plot(x, VBox(V0, a, x) * 0.001, "k--", label=r"$V(x) (x0.001)")   # Plot Potential
 plt.legend(loc=1, fontsize=8, fancybox=False)
 fig.savefig('step@2x.png')
 
@@ -105,10 +105,10 @@ line21, = ax2.plot([], [], "k--", label=r"$V(x)$ (x0.001)")
 line22, = ax2.plot([], [], "r", label=r"$Re\{ \psi \}$")
 plt.legend(loc=1, fontsize=8, fancybox=False)
 
-
+  
 def init():
-    line11.set_data(x, VStep(V0, a, x) * 0.001)
-    line21.set_data(x, VStep(V0, a, x) * 0.001)
+    line11.set_data(x, VBox(V0, a, x) * 0.001)
+    line21.set_data(x, VBox(V0, a, x) * 0.001)
     return line11, line21
 
 
@@ -128,5 +128,5 @@ print("Generating video")
 anim.save('Box.mp4', fps=15, extra_args=['-vcodec', 'libx264'], dpi=600)
 print("Generating GIF")
 anim.save('Box@2x.gif', writer='pillow', fps=15)
-# anim.save('step@2x.gif', writer='imagemagick', fps=15, dpi=150, extra_args=['-layers Optimize'])
+# anim.save('Box@2x.gif', writer='imagemagick', fps=15, dpi=150, extra_args=['-layers Optimize'])
 #anim.save('Box@2x.gif', writer='imagemagick', fps=15, dpi=150)
